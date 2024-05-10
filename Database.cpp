@@ -205,3 +205,60 @@ void Teacher::signin()
     sleep(5);
     return;
 }
+
+void Teacher::timetable(){
+char f;
+    fstream file3("Teacher.txt", ios::in);
+    fstream file4("course_schedule.txt", ios::app);
+    if (!file3.is_open())
+    {
+        cout << "Error opening file1!\n";
+        sleep(2000);
+        return;
+    }
+    if (!file4.is_open())
+    {
+        cout << "Error opening file2!\n";
+        sleep(2000);
+        return;
+    }
+
+    string firstName, lastName, tid, dept, user, pass, date, gender, phone, address, fee, quali, section, subject, time;
+    string fname, lname, id;
+    if (cin.fail()) {
+        cin.clear(); cin.ignore();
+    }
+    cout << "Enter your id: ";
+    cin >> t_id;
+
+
+    
+    while (getline(file3, tid, ','))
+    {   
+        getline(file3, section, ',');
+        getline(file3, firstName, ',');
+        getline(file3, lastName, ',');
+        getline(file3, dept, ',');
+        getline(file3, subject, ',');
+        getline(file3, user, ',');
+        getline(file3, pass, ',');
+        getline(file3, date, ',');
+        getline(file3, gender, ',');
+        getline(file3, phone, ',');
+        getline(file3, address, ',');
+        getline(file3, quali);
+
+        if(tid  == t_id){
+
+            cout << "enter time:   ";
+            cin >> time;
+            file4 << dept << "," << subject << "," << section << "," << tid << "," << time << endl;
+            cout << "time table created " << endl;
+            sleep(3);
+            file3.close();
+            file4.close();
+        }
+    }
+    file3.close();
+    file4.close();
+}     
