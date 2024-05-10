@@ -378,4 +378,215 @@ void Admin::addstudent()
     cout << "PRESS ANY KEY TO CONTINUE" << endl;
     cin>>f;
 }
+
+void Admin::editstudent()
+{
+    char f;
+    ifstream file("Student.txt");
+    ofstream file1("TEMP1.txt");
+    ofstream file2("TEMP2.txt");
+    ofstream file3("TEMP3.txt");
+    if (!file.is_open() || !file1.is_open() || !file2.is_open() || !file3.is_open())
+    {
+        cout << "Error opening file1!\n";
+        return;
+    }
+
+    string firstName, lastName, sid, dept, user, pass, date, gender, phone, address, fee, quali, marks, ssection;
+    string fname, lname, id;
+    /*if (cin.fail()) {
+        cin.clear(); cin.ignore();
+    }*/
+    cout << "PlEASE INPUT ID OF STUDENT    ";
+    cin >> id;
+    cout << "PLEASE INPUT THE FIRST NAME OF STUDENT TO EDIT INFO:    ";
+    cin >> fname;
+    cout << "PLEASE INPUT THE LAST NAME OF STUDENT TO EDIT INFO:    ";
+    cin >> lname;
+
+    bool found = false;
+    while (getline(file, sid, ','))
+    {
+        getline(file, section, ',');
+        getline(file, firstName, ',');
+        getline(file, lastName, ',');
+        getline(file, dept, ',');
+        getline(file, user, ',');
+        getline(file, pass, ',');
+        getline(file, date, ',');
+        getline(file, gender, ',');
+        getline(file, phone, ',');
+        getline(file, address, ',');
+        getline(file, fee, ',');
+        getline(file, quali, ',');
+        getline(file, marks, '\n');
+
+        if (fname == firstName && lname == lastName && id == sid)
+        {
+            found = true;
+    
+            string year, month, day;
+            cout << "PLEASE INPUT THE REGISTRATION DATE OF STUDENT" << endl;
+            cout << "ENTER YEAR    ";
+            cin >> year;
+            cout << "ENTER MONTH    ";
+            cin >> month;
+            cout << "ENTER DAY    ";
+            cin >> day;
+
+            while (stoi(year) < 1991 || stoi(year) > 2024 || stoi(month) < 1 || stoi(month) > 12 || stoi(day) < 1 || stoi(day) > 31) {
+                cout << "INVALID DATE!" <<endl;
+                cout << "RE-ENTER YEAR    ";
+                cin >> year;
+                cout << "RE-ENTER MONTH    ";
+                cin >> month;
+                cout << "RE-ENTER DAY    ";
+                cin >> day;
+            }
+
+            if (month.length() == 1) {
+                month = "0" + month;
+            }
+            if (day.length() == 1) {
+                day = "0" + day;
+            }
+            s_date = year + "/" + month + "/" + day;
+
+            cout << "PLEASE INPUT THE ID OF STUDENT E.G(595)   ";
+            cin >> s_id;
+
+            while (stoi(s_id) < 1 || stoi(s_id) > 999) 
+            {
+                cout << "INVALID ID!" <<endl;
+                cout << "RE-ENTER ID   ";
+                cin >> s_id;
+            }
+            if (s_id.length() == 1 ){
+                s_id = "00" + s_id;
+            }
+            else if (s_id.length() == 2){
+                s_id = "0" + s_id;
+            }
+            s_id = year + s_id;
+
+            cout << "PLEASE INPUT THE SECTION OF STUDENT    ";
+            cin >> this->section;
+
+            cout << "PLEASE INPUT THE FIRST NAME OF STUDENT    ";
+            cin >> s_firstname;
+            cout << "PLEASE INPUT THE LAST NAME OF STUDENT    ";
+            cin >> s_lastname;
+
+            cout << "PLEASE INPUT THE DEPARTMENT OF STUDENT; 1:FCSE|2:MGS|3:FME|4:FMCE    ";
+            cin >> s_department;
+
+            while (stoi(s_department) < 1 || stoi(s_department) > 4 ){
+                cout << "INVALID CHOICE!" <<endl;
+                cout << "RE-ENETER DEPARTMENT    ";
+                cin >>s_department;
+            }
+            department x;
+            if (s_department == "1") {
+                x = FCSE;
+            }
+            else if (s_department == "2") {
+                x = MGS;
+            }
+            else if (s_department == "3") {
+                x = FME;
+            }
+            else if (s_department == "4") {
+                x = FMCE;
+            }
+
+            cout << "PLEASE SELECT THE GENDER OF STUDENT; 1:MALE|2:FEMALE    ";
+            cin >> s_gender;
+            while (stoi(s_gender) < 1 || stoi(s_gender) > 2){
+                cout << "INVALID CHOICE!" <<endl;
+                cout << "RE-ENETER GENDER    ";
+                cin >> s_gender;
+            }
+
+            enum gender y;
+            if (s_gender == "1"){
+                y = male;
+            }
+            else if (s_gender == "2"){
+                y = female;
+            }
+
+            cout << "STUDENT USERNAME GENERATED    " << endl;
+            s_user_name = "u" + s_id + "@giki.edu.pk";
+            cout << "STUDENT PASSWORD GENERATED   " << endl;
+            s_password = year + month + day;
+
+            cout << "PLEASE INPUT THE PHONE NUMBER OF STUDENT    ";
+            cin >> s_number;
+            cout << "PLEASE INPUT THE CITY OF STUDENT AS ADDRESS    ";
+            cin >> s_address;
+            cout << "PLEASE INPUT THE FEE STATUS OF STUDENT    ";
+            cin >> this->fee;
+
+            int choice;
+
+            cout << "Enter 1 for Alevels, 2 for FSC, or 3 for Private: ";
+            cin >> choice;
+
+            while (choice < 1 || choice > 3) {
+                cout << "Invalid choice. Please enter 1, 2, or 3: ";
+                cin >> choice;
+            }
+
+            switch (choice) {
+                case 1:
+                    s_qualification = "Alevels";
+                    break;
+                case 2:
+                    s_qualification = "FSC";
+                    break;
+                case 3:
+                    s_qualification = "Private";
+                    break;
+            }
+
+            int no_of_subjects;
+            cout << "PLEASE INPUT NUMBER OF SUBJECTS    ";
+            cin >> no_of_subjects;
+
+            General::Marks student[no_of_subjects];
+
+            setSubject(student, no_of_subjects);
+            string updsted_marks = getSubject(student, no_of_subjects);
+             
+            file1 << s_id << "," << this->section << "," << s_firstname << "," << s_lastname << "," << departments(x) << "," << s_user_name << "," << s_password << "," << s_date << "," << genders(y) << "," << s_number << "," << s_address << "," << this->fee << "," << s_qualification << "," << getSubject(student, no_of_subjects) << endl;
+            file2 << s_id << "," << this->section << "," << updsted_marks << endl;
+            file3 << updsted_marks << endl;
+        }
+        else {
+            file1 << sid << "," << section << "," << firstName << "," << lastName << "," << dept << "," << user << "," << pass << "," << date << "," << gender << "," << phone << "," << address << "," << fee << "," << quali << "," << marks << endl;
+            file2 << sid << "," << section << "," << marks << endl;
+            file3 << marks << endl;
+        }
+    }
+    file.close();
+    file2.close();
+    if (found == false)
+    {
+        cout << "THE ENTERED ID, FIRST NAME OR LAST NAME DID NOT MATCH TO ANY DATA" << endl;
+        remove("TEMP1.txt");
+        remove("TEMP2.txt");
+        remove("TEMP3.txt");
+    }
+    else {
+        remove("Student.txt");
+        remove("student_marks.txt");
+        remove("student_id.txt");
+        rename("TEMP1.txt", "Student.txt");
+        rename("TEMP2.txt", "student_data.txt");
+        rename("TEMP3.txt", "student_marks.txt");
+        cout << endl << "THE DATA OF STUDENT HAS BEEN EDITED" << endl;
+    }
+    cout << "PRESS ANY KEY TO CONTINUE " << endl;
+    cin>>f;
+}
 }
