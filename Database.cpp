@@ -227,6 +227,5 @@ void Admin::addteacher()
     cout << endl << "THE DATA OF TEACHER HAS BEEN ADDED" << endl;
     cout << "PRESS ANY KEY TO CONTINUE" << endl;
     cin>>f;
-    
 } 
 }
