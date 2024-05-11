@@ -765,4 +765,51 @@ void Admin::editteacher()
     cin>>f;
 }
 
+void Admin::viewstudent()
+{
+    char f;
+    fstream file("Student.txt", ios::in);
+    if (!file.is_open()) { cout << "Error!\n"; }
+
+    string firstName, lastName, id, dept, user, pass, date, gender, phone, address, fee, quali, marks, section;
+
+    cout << endl << "TOTAL RECORDS OF STUDENTS FOUND: " << endl;
+    while (getline(file, id, ','))
+    {   
+        getline(file, section, ',');
+        getline(file, firstName, ',');
+        getline(file, lastName, ',');
+        getline(file, dept, ',');
+        getline(file, id, ',');
+        getline(file, user, ',');
+        getline(file, pass, ',');
+        getline(file, date, ',');
+        getline(file, gender, ',');
+        getline(file, phone, ',');
+        getline(file, address, ',');
+        getline(file, fee, ',');
+        getline(file, quali, ',');
+        getline(file, marks);
+
+        cout << "ID#    " << id << endl;
+        cout << "SECTION    " << section << endl;
+        cout << "FIRST NAME:    " << firstName << endl;
+        cout << "LAST NAME:    " << lastName << endl;
+        cout << "DEPARTMENT:    " << dept << endl;
+        cout << "USER NAME:    " << user << endl;
+        cout << "PASSWORD:    " << pass << endl;
+        cout << "REGISTERATION DATE:    " << date << endl;
+        cout << "GENDER:    " << gender << endl;
+        cout << "PHONE #    " << phone << endl;
+        cout << "ADDRESS:    " << address << endl;
+        cout << "FEE:    " << fee << endl;
+        cout << "QUALIFICATION:    " << quali << endl;
+        cout << "MARKS:    " << marks << endl << endl;
+    }
+
+    file.close();
+    cout << "PRESS ANY KEY TO CONTINUE " << endl;
+    cin>>f;
+}
+
 }
