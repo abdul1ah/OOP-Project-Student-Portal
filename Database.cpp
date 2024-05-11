@@ -313,3 +313,56 @@ void Teacher::assignmarks(){
     file.close();
     file3.close();
 }
+
+void Teacher::markingattendance(){
+    char f;
+    fstream file("student_data.txt", ios::in);
+    fstream file3("attendance.txt", ios::app);
+    if (!file3.is_open())
+    {
+        cout << "Error opening file1!\n";
+        sleep(3);
+        return;
+    }
+    if (!file.is_open())
+    {
+        cout << "Error opening file2!\n";
+        sleep(3);
+        return;
+    }
+
+    string sub1, sub2, sub3, sub4, sub5, date, section, subject, attendanceStatus;
+    string fname, lname, id;
+    if (cin.fail()) {
+        cin.clear(); cin.ignore();
+    }
+    cout << "Enter your section: ";
+    cin >> this->section;
+    cout << "Enter your subject: ";
+    cin >> this->subject;
+    cout << "Enter date: ";
+    cin >> date;
+
+    string line;
+    while (getline(file, line, '\n')){
+        stringstream iss(line);
+        string s_id, tempSection, tempSub1, tempSub2, tempSub3, tempSub4, tempSub5;
+
+        getline(iss, s_id, ',');
+        getline(iss, tempSection, ',');
+        getline(iss, tempSub1, ',');
+        getline(iss, tempSub2, ',');
+        getline(iss, tempSub3, ',');
+        getline(iss, tempSub4, ',');
+        getline(iss, tempSub5, ',');
+
+        if(this->section == tempSection && (this->subject == tempSub1 || this->subject == tempSub2 || this->subject == tempSub3 || this->subject == tempSub4 || this->subject == tempSub5)){
+            cout << "Enter attendance status for student " << s_id << " (P for present, A for absent): ";
+            cin >> attendanceStatus;
+            file3 << this->subject << " " << tempSection << " " << s_id << " " << date << " " << attendanceStatus << endl;
+        }
+    }
+    sleep(3);
+    file.close();
+    file3.close();
+}
