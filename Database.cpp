@@ -111,7 +111,7 @@ void Admin::signin() {
             return;
         }
     }
-
+}
 void Admin::addteacher()
 {
     char f;
@@ -812,4 +812,3 @@ void Admin::viewstudent()
     cin>>f;
 }
 
-}
