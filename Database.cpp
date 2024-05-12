@@ -359,7 +359,7 @@ void Admin::addstudent()
     }
 
     cout << "STUDENT USERNAME GENERATED    " << endl;
-    UserName = "u" + ID + "@giki.edu,pk";
+    UserName = "u" + ID + "@giki.edu.pk";
     cout << "STUDENT PASSWORD GENERATED   " << endl;
     Password = year + month + day;
 
