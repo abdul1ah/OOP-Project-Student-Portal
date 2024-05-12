@@ -1,5 +1,38 @@
 #include "Database.hpp"
 
+//--------------------General Class Functions--------------------
+
+string General::departments(department x){
+        if (x == FCSE)
+            return "FCSE";
+        else if (x == MGS)
+            return "MGS";
+        else if (x == FME)
+            return "FME";
+        else if (x == FMCE)
+            return "FMCE";
+    }
+string General::genders(gender y){
+        if (y == male)
+            return "MALE";
+        else if (y == female)
+            return "FEMALE";
+    }
+void General::setSubject(Marks student[], int totalSubjects ){
+    for (int i = 0; i < totalSubjects; i++)
+    {
+        cout << "PLEASE INPUT THE NAME OF SUBJECT    ";
+        cin >> student[i].s_subject;
+    }
+}
+string General::getSubject(Marks student[], int totalSubjects) {
+    string marks;
+    for (int i = 0; i < totalSubjects; i++) {
+        marks = marks + student[i].s_subject + ",";
+    }
+    return marks;
+}
+
 //--------------------Admin Class Functions--------------------
 void Admin::signin() {
     char f;
