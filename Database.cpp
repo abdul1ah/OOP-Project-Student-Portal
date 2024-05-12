@@ -1232,7 +1232,7 @@ void Student::view_attendance() {
     cout << "Enter your registration number: ";
     cin >> regNumber;
 
-    ifstream file("student_marks.txt");
+    ifstream file("attendance.txt");
     if (!file.is_open()) {
         cout << "Error opening file!" << endl;
         return;
@@ -1241,7 +1241,7 @@ void Student::view_attendance() {
     bool found = false;
     while (file >> subject >> section >> regNumberFromFile >> date >> attendanceStatus) {
         if (regNumber == regNumberFromFile) {
-            cout << "Subject: " << subject << ", Section: " << section << ", Date: " << date << ", Attendance: " << attendanceStatus << endl;
+            cout << "Subject: " << subject << ", Section: " << section << ", Date: " << date << ", reg no:" << regNumberFromFile <<  ", Attendance: " << attendanceStatus << endl;
             found = true;
         }
     }
@@ -1255,26 +1255,26 @@ void Student::view_attendance() {
 }
 void Student::view_marks()
 {
-    string regNumber, section, subject, date, attendanceStatus, regNumberFromFile;
+    string regNumber, section, subject, date, marks, regNumberFromFile;
     cout << "Enter your registration number: ";
     cin >> regNumber;
 
-    ifstream file("attendance.txt");
+    ifstream file("student_marks.txt");
     if (!file.is_open()) {
         cout << "Error opening file!" << endl;
         return;
     }
 
     bool found = false;
-    while (file >> subject >> section >> regNumberFromFile >> date >> attendanceStatus) {
+    while (file >> subject >> section >> regNumberFromFile >> marks) {
         if (regNumber == regNumberFromFile) {
-            cout << "Subject: " << subject << ", Section: " << section << ", Date: " << date << ", Attendance: " << attendanceStatus << endl;
+            cout << "Subject: " << subject << ", Section: " << section << ", reg no: " << regNumberFromFile << ", Marks: " << marks << endl;
             found = true;
         }
     }
 
     if (!found) {
-        cout << "No attendance records found for registration number: " << regNumber << endl;
+        cout << "No marks records found for registration number: " << regNumber << endl;
     }
     sleep(4);
 
