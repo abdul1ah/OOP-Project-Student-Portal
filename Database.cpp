@@ -250,6 +250,3 @@ void Teacher::markingattendance(){
     file.close();
     file3.close();
 }
-
-
-#include<unistd.
