@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);</string>
+   </property>
+   <widget class="QPushButton" name="admin">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>357</y>
+      <width>152</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel, QPushButton {
+    background-color: rgb(255, 0, 0);
+   border-radius: 8px;
+   color: white;
+   font-size: 15px;
+   font-weight: bold;
+	font: bold &quot;Segoe UI&quot;;
+
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Login as a Admin</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="teacher">
+    <property name="geometry">
+     <rect>
+      <x>33</x>
+      <y>426</y>
+      <width>152</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QLabel, QPushButton {
+ background-color: rgb(0, 0, 255);
+   border-radius: 8px;
+   color: white;
+   font-size: 15px;
+   font-weight: bold;
+	font: bold &quot;Segoe UI&quot;;
+
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Login as a Teacher</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="student">
+    <property name="geometry">
+     <rect>
+      <x>195</x>
+      <y>426</y>
+      <width>152</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QLabel, QPushButton {
+	background-color: rgb(255, 255, 255);
+   border-radius: 8px;
+   color: black;
+   font-size: 15px;
+   font-weight: bold;
+	font: bold &quot;Segoe UI&quot;;
+
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Login as a Student</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>355</x>
+      <y>0</y>
+      <width>445</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>28</x>
+      <y>170</y>
+      <width>372</width>
+      <height>174</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
